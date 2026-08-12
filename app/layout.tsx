@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Grain } from "@/components/grain";
 import { AmbientBackground } from "@/components/ambient-background";
 import "./globals.css";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <AmbientBackground />
         <Grain />
         {children}
+        <Analytics />
       </body>
     </html>
   );
