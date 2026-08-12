@@ -38,7 +38,7 @@ export function Hero() {
           variants={item}
           className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-accent"
         >
-          {profile.role} — {profile.location}
+          {profile.location}
         </motion.p>
 
         <motion.h1
