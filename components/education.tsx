@@ -1,4 +1,4 @@
-import { certifications, education, skills } from "@/data/content";
+import { beyondResume, certifications, education, skills } from "@/data/content";
 import { RevealGroup, RevealItem } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 
@@ -70,6 +70,22 @@ export function Education() {
                 </RevealItem>
               ))}
             </div>
+
+            <RevealItem className="mt-10">
+              <p className="mb-3 text-xs italic text-muted">
+                {beyondResume.intro}
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {beyondResume.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="cursor-default border border-border/70 px-2.5 py-1 font-mono text-xs text-muted transition-colors duration-150 hover:border-accent/40 hover:text-accent"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </RevealItem>
           </div>
         </RevealGroup>
       </div>

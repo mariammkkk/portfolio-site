@@ -111,13 +111,26 @@ export const experience: ExperienceEntry[] = [
   },
 ];
 
+export type ProjectStat = {
+  value: string;
+  label: string;
+};
+
+export type ProjectCaseStudy = {
+  problem: string;
+  approach: string;
+  result: string;
+  stats: ProjectStat[];
+  learned?: string;
+};
+
 export type Project = {
   title: string;
   subtitle: string;
   date: string;
   github: string;
   tech: string[];
-  description: string;
+  caseStudy: ProjectCaseStudy;
 };
 
 export const projects: Project[] = [
@@ -127,8 +140,17 @@ export const projects: Project[] = [
     date: "Oct 2025",
     github: "https://github.com/mariammkkk/Clara-Insurance-Claims-Automation",
     tech: ["Python", "Structify", "Airia Platform", "Agentic AI"],
-    description:
-      "Built an agentic AI workflow to detect, visualize, and extract critical unstructured medical data from patient records and claims. Deployed specialized AI agents on the Airia Platform, automating high-risk claims review and reducing manual processing time by 65% while improving regulatory compliance. Led end-to-end product development at the 48-hour hackathon; selected for the Health Hack Accelerator Program and pivoted into an AI-assisted call triage system for family planning.",
+    caseStudy: {
+      problem:
+        "Insurance claims review meant manually digging through unstructured medical records and patient claims. That process was slow, error-prone, and carried real compliance risk.",
+      approach:
+        "Built an agentic AI workflow in Python and Structify to detect, visualize, and extract critical unstructured medical data, then deployed specialized AI agents on the Airia Platform to automate high-risk claims review. Led end-to-end product development in a 48-hour hackathon, coordinating technical and clinical requirements.",
+      result:
+        "Improved policy and regulatory compliance and was selected for the Health Hack Accelerator Program.",
+      stats: [{ value: "65%", label: "less manual processing time" }],
+      learned:
+        "It didn't stay static. Post-hackathon, I pivoted it into an AI-assisted call triage system for family planning.",
+    },
   },
   {
     title: "Early Alzheimer's Detection via Handwriting Analysis",
@@ -136,8 +158,16 @@ export const projects: Project[] = [
     date: "Mar – Apr 2025",
     github: "https://github.com/mariammkkk/Alzheimers-Detection-Model",
     tech: ["Python", "NumPy", "Pandas", "Scikit-learn"],
-    description:
-      "Built a classification model achieving 83% accuracy on a 174-subject clinical trial dataset. Engineered a data pipeline to preprocess 25 multi-modal handwriting trials and used correlation matrices to inform feature selection and model design. Benchmarked Random Forest against Naive Bayes, Logistic Regression, and SVM, and selected Random Forest as the best-fit algorithm.",
+    caseStudy: {
+      problem:
+        "Early Alzheimer's detection is difficult and typically requires expensive or invasive clinical testing, even though handwriting changes are a known but underused early signal.",
+      approach:
+        "Built a data pipeline to preprocess 25 multi-modal handwriting trials across a 174-subject clinical dataset, used correlation matrices to guide feature selection, and benchmarked Random Forest against Naive Bayes, Logistic Regression, and SVM.",
+      result: "Random Forest came out as the best-fit algorithm.",
+      stats: [{ value: "83%", label: "classification accuracy" }],
+      learned:
+        "A larger, more diverse dataset would help confirm how well this generalizes.",
+    },
   },
   {
     title: "Beauty Product R&D",
@@ -145,8 +175,17 @@ export const projects: Project[] = [
     date: "",
     github: "https://github.com/mariammkkk/beauty_product_rnd",
     tech: ["Python", "Pandas", "Streamlit", "Git LFS"],
-    description:
-      "Built a dynamic business intelligence dashboard that transforms unstructured customer feedback into a financially backed strategic roadmap, shifting customer experience initiatives from reactive cost centers to proactive revenue drivers. Quantified financial impact with a Priority Score and Value-to-Cost Ratio, surfacing $99.83M in total net impact, a 1.62:1 global ROI, and topics with ROI as high as 11.75:1.",
+    caseStudy: {
+      problem:
+        "Customer experience issues were treated as pure cost centers, with no clear way to quantify which fixes were actually worth the investment.",
+      approach:
+        "Built an interactive Streamlit dashboard in Python and Pandas that translates unstructured customer feedback into a Priority Score and Value-to-Cost Ratio, letting stakeholders filter by action type and net impact.",
+      result: "Some topics reached an ROI as high as 11.75:1.",
+      stats: [
+        { value: "$99.83M", label: "total net impact" },
+        { value: "1.62:1", label: "global ROI" },
+      ],
+    },
   },
 ];
 
@@ -273,6 +312,20 @@ export const skills: { group: string; items: string[] }[] = [
     items: ["Figma"],
   },
 ];
+
+export const beyondResume = {
+  intro: "When I'm not building things",
+  tags: [
+    "Hiking",
+    "Ziplining",
+    "Jet Skiing",
+    "Beach Days",
+    "Video & Photo Editing",
+    "Community Service",
+    "Traveling",
+    "Making Things From Scratch",
+  ],
+};
 
 export const nav = [
   { label: "About", href: "#about" },
