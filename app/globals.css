@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --paper: #faf8f3;
+  --ink: #17140f;
+  --muted: #6b6355;
+  --border: #e6e1d6;
+  --accent: #b5650f;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(181, 101, 15, 0.1);
+  --grain-opacity: 0.05;
+}
+
+.dark {
+  --paper: #0d0c0a;
+  --ink: #f2eee6;
+  --muted: #93897a;
+  --border: #26231a;
+  --accent: #e2a23d;
+  --accent-ink: #17140f;
+  --accent-soft: rgba(226, 162, 61, 0.12);
+  --grain-opacity: 0.07;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-plex-mono);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
