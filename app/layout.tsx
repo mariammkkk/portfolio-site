@@ -23,9 +23,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Mariam Khan — CS & Data Science",
+  title: "Mariam Khan | CS & Data Science",
   description:
-    "Mariam Khan — CS & Data Science grad building AI-driven products. Product Specialist @ Apple.",
+    "Mariam Khan, CS & Data Science grad building AI-driven products. Product Specialist @ Apple.",
   openGraph: {
     title: "Mariam Khan",
     description:

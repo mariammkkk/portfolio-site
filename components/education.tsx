@@ -42,7 +42,7 @@ export function Education() {
                   {cert.name}
                   <span className="text-muted">
                     {" "}
-                    — {cert.issuer}, {cert.year}
+                    · {cert.issuer}, {cert.year}
                   </span>
                 </p>
               ))}

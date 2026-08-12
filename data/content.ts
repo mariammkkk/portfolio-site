@@ -8,7 +8,7 @@ export const profile = {
   positioning: "CS & Data Science grad building AI-driven products.",
   role: "Product Specialist @ Apple",
   location: "Old Bridge, NJ",
-  email: "mariam.khan8@rutgers.edu",
+  email: "mariamkhan8805@gmail.com",
   linkedin: "https://linkedin.com/in/mariamkhan8",
   linkedinLabel: "linkedin.com/in/mariamkhan8",
   github: "https://github.com/mariammkkk",
@@ -18,7 +18,7 @@ export const profile = {
 
 export const about = {
   paragraph:
-    "CS & Data Science student who graduated a year early from Rutgers (Cum Laude, May 2026). Experience spans product support at Apple, AI/ML engineering internships and externships at Pfizer, CrisPRO.ai, and Rutgers MBS, and hands-on product leadership through hackathons and campus organizations. Interested in the intersection of AI/ML and product.",
+    "I graduated a year early from Rutgers University, New Brunswick in May 2026. I'm a new grad looking to apply my expertise and grow in a professional role. I'm happiest at the intersection of AI/ML and product, figuring out not just whether something can be built, but whether it should be.",
 };
 
 export type ExperienceEntry = {
@@ -175,7 +175,7 @@ export const leadership: LeadershipGroup[] = [
         end: "May 2026",
         description:
           "Co-founded a tech initiative connecting students and mentors; raised $2k+ in sponsorships, grew social to 190k+ interactions, drew 70+ attendees per event",
-        photo: "/leadership/tech-collaborative.jpg",
+        photo: "/leadership/tech-collab-team.jpg",
       },
       {
         role: "Marketing Director",
@@ -184,7 +184,7 @@ export const leadership: LeadershipGroup[] = [
         end: "May 2026",
         description:
           "Led digital marketing and outreach campaigns driving 250k+ digital engagements, $20k+ in donations, and 400+ peak attendees",
-        photo: "/leadership/umr.jpg",
+        photo: "/leadership/umr-team-photo.JPG",
       },
       {
         role: "Authors Manager",
@@ -237,6 +237,9 @@ export const education = {
     "Machine Learning Principles",
     "Data Management",
     "Introduction to Data Science",
+    "Principles of Information & Data Management",
+    "Regression Methods",
+    "Statistical Inference for Data Science",
   ],
 };
 
@@ -250,25 +253,24 @@ export const certifications = [
 
 export const skills: { group: string; items: string[] }[] = [
   {
-    group: "Languages",
-    items: ["Python", "R", "SQL", "Java", "HTML", "CSS", "JavaScript"],
+    group: "Core Technical",
+    items: ["Python", "SQL", "Java", "R"],
   },
   {
-    group: "Frameworks & Tools",
-    items: [
-      "React",
-      "Pandas",
-      "Scikit-learn",
-      "AWS",
-      "Notion",
-      "Miro",
-      "Tableau",
-      "Power BI",
-      "Figma",
-      "MySQL",
-      "Git",
-      "Excel",
-    ],
+    group: "ML / AI",
+    items: ["Pandas", "NumPy", "Scikit-learn", "LlamaIndex"],
+  },
+  {
+    group: "Cloud & Engineering",
+    items: ["AWS", "Git", "Docker"],
+  },
+  {
+    group: "Data & BI",
+    items: ["Tableau", "Power BI"],
+  },
+  {
+    group: "Product & Design",
+    items: ["Figma"],
   },
 ];
 
