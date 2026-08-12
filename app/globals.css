@@ -1,27 +1,14 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  --paper: #faf8f3;
-  --ink: #17140f;
-  --muted: #6b6355;
-  --border: #e6e1d6;
-  --accent: #b5650f;
-  --accent-ink: #ffffff;
-  --accent-soft: rgba(181, 101, 15, 0.1);
-  --grain-opacity: 0.05;
-}
-
-.dark {
-  --paper: #0d0c0a;
-  --ink: #f2eee6;
-  --muted: #93897a;
-  --border: #26231a;
+  --paper: #0b0a08;
+  --ink: #f3efe6;
+  --muted: #948a7a;
+  --border: #292418;
   --accent: #e2a23d;
   --accent-ink: #17140f;
   --accent-soft: rgba(226, 162, 61, 0.12);
-  --grain-opacity: 0.07;
+  --grain-opacity: 0.06;
 }
 
 @theme inline {
@@ -43,11 +30,50 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
   background: var(--paper);
   color: var(--ink);
+}
+
+@keyframes grain-flicker {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-2%, -4%);
+  }
+  20% {
+    transform: translate(-6%, 2%);
+  }
+  30% {
+    transform: translate(4%, -8%);
+  }
+  40% {
+    transform: translate(-4%, 6%);
+  }
+  50% {
+    transform: translate(-2%, 4%);
+  }
+  60% {
+    transform: translate(6%, 0%);
+  }
+  70% {
+    transform: translate(0%, 8%);
+  }
+  80% {
+    transform: translate(-6%, -2%);
+  }
+  90% {
+    transform: translate(4%, 2%);
+  }
+}
+
+.grain-animate {
+  animation: grain-flicker 1.6s steps(8) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -36,10 +36,10 @@ If you want to change how something looks — spacing, animation timing, colors 
 
 ## Design notes
 
-- **Accent color — deep amber (`#b5650f` light / `#e2a23d` dark).** Chosen to avoid the blue/purple/teal palette nearly every AI-generated or templated portfolio defaults to. Amber reads warm and confident against the paper/ink editorial base, and doubles as a highlighter/ink accent rather than a "tech SaaS" signal.
-- **Type pairing:** Fraunces (serif) for headings, IBM Plex Mono for labels/eyebrows/nav, Inter for body copy.
-- **Dark mode** respects system preference on first load, then remembers an explicit toggle choice in `localStorage`. Theme is applied before hydration (inline script in `app/layout.tsx`) to avoid a flash of the wrong theme.
-- All scroll/entrance animations respect `prefers-reduced-motion`.
+- **Accent color — deep amber (`#e2a23d`).** Chosen to avoid the blue/purple/teal palette nearly every AI-generated or templated portfolio defaults to. Amber reads warm and confident against the near-black editorial base, and doubles as a highlighter/ink accent rather than a "tech SaaS" signal.
+- **Type pairing:** Fraunces (serif) for headings and the About pull-quote, IBM Plex Mono for labels/eyebrows/nav, Inter for body copy.
+- **Dark only, deliberately** — one considered palette rather than a light/dark toggle. Background is a layered composition: a flat near-black base, a slow-drifting ambient amber glow (`components/ambient-background.tsx`), and an animated film-grain overlay (`components/grain.tsx`) — not a flat color or a stock gradient blob.
+- All scroll/entrance and ambient background animations respect `prefers-reduced-motion`.
 
 ## Deploying to Vercel
 

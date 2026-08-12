@@ -5,7 +5,10 @@ export function Grain() {
       className="pointer-events-none fixed inset-0 z-[60] mix-blend-overlay"
       style={{ opacity: "var(--grain-opacity)" }}
     >
-      <svg width="100%" height="100%">
+      <svg
+        className="grain-animate absolute -inset-[20%] h-[140%] w-[140%]"
+        preserveAspectRatio="none"
+      >
         <filter id="grain-filter">
           <feTurbulence
             type="fractalNoise"

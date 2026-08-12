@@ -9,7 +9,7 @@ export function About() {
         <SectionHeading index="01" title="About" />
         <RevealGroup>
           <RevealItem>
-            <p className="max-w-3xl text-xl leading-relaxed text-ink/90 md:text-2xl md:leading-relaxed">
+            <p className="max-w-3xl border-l-2 border-accent/60 pl-6 font-serif text-2xl font-light leading-snug tracking-tight text-ink/95 md:pl-8 md:text-[2rem] md:leading-snug">
               {about.paragraph}
             </p>
           </RevealItem>

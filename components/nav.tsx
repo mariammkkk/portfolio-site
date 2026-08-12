@@ -4,7 +4,6 @@ import { useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { nav, profile } from "@/data/content";
 import { useActiveSection } from "@/lib/use-active-section";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const sectionIds = nav.map((item) => item.href.replace("#", ""));
 
@@ -63,7 +62,6 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <ThemeToggle />
           <a
             href={profile.resumeHref}
             target="_blank"

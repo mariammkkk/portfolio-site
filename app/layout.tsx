@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
-import { ThemeProvider, THEME_INIT_SCRIPT } from "@/components/theme-provider";
 import { Grain } from "@/components/grain";
+import { AmbientBackground } from "@/components/ambient-background";
 import "./globals.css";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   axes: ["opsz", "SOFT"],
+  style: ["normal", "italic"],
 });
 
 const plexMono = IBM_Plex_Mono({
@@ -38,16 +39,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${fraunces.variable} ${plexMono.variable} ${inter.variable} h-full antialiased`}
-      suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-      </head>
       <body className="min-h-full flex flex-col font-sans">
-        <ThemeProvider>
-          <Grain />
-          {children}
-        </ThemeProvider>
+        <AmbientBackground />
+        <Grain />
+        {children}
       </body>
     </html>
   );
