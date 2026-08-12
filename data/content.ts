@@ -316,14 +316,12 @@ export const skills: { group: string; items: string[] }[] = [
 export const beyondResume = {
   intro: "When I'm not building things",
   tags: [
-    "Hiking",
-    "Ziplining",
-    "Jet Skiing",
-    "Beach Days",
-    "Video & Photo Editing",
-    "Community Service",
+    "Watching K-Dramas & Bollywood",
+    "Anything Outdoors",
     "Traveling",
-    "Making Things From Scratch",
+    "Learning New Things",
+    "Videography & Photography",
+    "Volleyball"
   ],
 };
 
