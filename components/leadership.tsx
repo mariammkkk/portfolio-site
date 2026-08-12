@@ -1,9 +1,9 @@
 import { existsSync } from "fs";
 import path from "path";
-import Image from "next/image";
 import { leadership } from "@/data/content";
 import { RevealGroup, RevealItem } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { LeadershipPhoto } from "@/components/leadership-photo";
 
 // Checked at render time (server component) so a missing photo — e.g. before
 // it's been dropped into /public — is simply omitted instead of showing a
@@ -31,13 +31,7 @@ export function Leadership() {
                     className="group flex gap-4 border-b border-border pb-5 last:border-b-0"
                   >
                     {entry.photo && photoExists(entry.photo) && (
-                      <Image
-                        src={entry.photo}
-                        alt={entry.org}
-                        width={64}
-                        height={64}
-                        className="h-14 w-14 shrink-0 border border-border object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0 sm:h-16 sm:w-16"
-                      />
+                      <LeadershipPhoto src={entry.photo} alt={entry.org} />
                     )}
                     <div>
                       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
