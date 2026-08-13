@@ -10,8 +10,8 @@ export type ApertureBladesHandle = {
 
 const BLADE_COUNT = 8;
 const PIVOT_RADIUS = 1.35;
-const BLADE_LENGTH = 2.05;
-const BLADE_WIDTH = 0.95;
+const BLADE_LENGTH = 1.85;
+const BLADE_WIDTH = 0.82;
 // How far (radians) each blade swings away from "pointing at center" once
 // fully open. All blades twist the same rotational direction, which is what
 // gives a real iris its characteristic pinwheel sweep.
@@ -20,10 +20,14 @@ const OPEN_TWIST = THREE.MathUtils.degToRad(64);
 function createBladeGeometry() {
   // Pivot stays at the shape's local origin (0,0) so rotating the parent
   // group swings the blade around its mounting point, not its own center.
+  // Shape is wide at the pivot (rim) and tapers to a point toward the
+  // center -- like a real iris blade. Wide-at-tip instead of wide-at-pivot
+  // would swing a wide edge out past the outer ring as the blades twist
+  // open, reading as a jagged star instead of a contained lens.
   const shape = new THREE.Shape();
-  shape.moveTo(0, 0);
-  shape.lineTo(BLADE_LENGTH, BLADE_WIDTH / 2);
-  shape.lineTo(BLADE_LENGTH, -BLADE_WIDTH / 2);
+  shape.moveTo(0, BLADE_WIDTH / 2);
+  shape.lineTo(BLADE_LENGTH, 0);
+  shape.lineTo(0, -BLADE_WIDTH / 2);
   shape.closePath();
 
   const geometry = new THREE.ExtrudeGeometry(shape, {
