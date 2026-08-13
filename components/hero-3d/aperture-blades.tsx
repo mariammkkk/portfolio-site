@@ -11,7 +11,8 @@ export type ApertureBladesHandle = {
 const BLADE_COUNT = 8;
 const PIVOT_RADIUS = 1.35;
 const BLADE_LENGTH = 1.85;
-const BLADE_WIDTH = 0.82;
+const BLADE_WIDTH_BASE = 0.82; // width at the pivot (rim) edge
+const BLADE_WIDTH_TIP = 0.13; // width at the inner (center-facing) edge
 // How far (radians) each blade swings away from "pointing at center" once
 // fully open. All blades twist the same rotational direction, which is what
 // gives a real iris its characteristic pinwheel sweep.
@@ -20,14 +21,15 @@ const OPEN_TWIST = THREE.MathUtils.degToRad(64);
 function createBladeGeometry() {
   // Pivot stays at the shape's local origin (0,0) so rotating the parent
   // group swings the blade around its mounting point, not its own center.
-  // Shape is wide at the pivot (rim) and tapers to a point toward the
-  // center -- like a real iris blade. Wide-at-tip instead of wide-at-pivot
-  // would swing a wide edge out past the outer ring as the blades twist
-  // open, reading as a jagged star instead of a contained lens.
+  // True trapezoid: wide flat edge at the pivot (rim), narrower flat edge
+  // at the inner tip -- not a sharp triangle point. Wide-at-tip instead of
+  // wide-at-pivot would swing a wide edge out past the outer ring as the
+  // blades twist open, reading as a jagged star instead of a contained lens.
   const shape = new THREE.Shape();
-  shape.moveTo(0, BLADE_WIDTH / 2);
-  shape.lineTo(BLADE_LENGTH, 0);
-  shape.lineTo(0, -BLADE_WIDTH / 2);
+  shape.moveTo(0, BLADE_WIDTH_BASE / 2);
+  shape.lineTo(BLADE_LENGTH, BLADE_WIDTH_TIP / 2);
+  shape.lineTo(BLADE_LENGTH, -BLADE_WIDTH_TIP / 2);
+  shape.lineTo(0, -BLADE_WIDTH_BASE / 2);
   shape.closePath();
 
   const geometry = new THREE.ExtrudeGeometry(shape, {
@@ -43,7 +45,11 @@ export const ApertureBlades = forwardRef<
   ApertureBladesHandle,
   { color?: string; metalness?: number; roughness?: number }
 >(function ApertureBlades(
-  { color = "#e2a23d", metalness = 0.35, roughness = 0.45 },
+  // Matte dark charcoal, not shiny/chrome and not gold -- the amber accent
+  // lives in the HUD overlay and the thin rim ring instead. Moderate
+  // metalness + roughness lets angled blade edges catch a subtle specular
+  // highlight from the key light without the whole blade looking polished.
+  { color = "#211d16", metalness = 0.55, roughness = 0.55 },
   ref,
 ) {
   const groupRefs = useRef<Array<THREE.Group | null>>([]);

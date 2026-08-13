@@ -74,11 +74,20 @@ function subscribeNoop() {
  *     instant a visitor scrolls past it.
  *  3. Small viewports / low core-count devices get a lighter scene (fewer
  *     ring segments, capped device pixel ratio).
+ *
+ * `scrollCloseRef` is supplied by the parent (see hero.tsx) rather than
+ * computed internally, so the same scroll progress can also fade the HUD
+ * overlay -- the lens and its viewfinder fade out together, not separately.
  */
-export function Hero3D({ className }: { className?: string }) {
+export function Hero3D({
+  className,
+  scrollCloseRef,
+}: {
+  className?: string;
+  scrollCloseRef: React.RefObject<number>;
+}) {
   const shouldReduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollCloseRef = useRef(0);
 
   const capabilities = useSyncExternalStore(
     subscribeNoop,
@@ -104,29 +113,6 @@ export function Hero3D({ className }: { className?: string }) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [mode]);
-
-  // Drives both the blade "racking focus" close (via the ref, read inside
-  // the R3F render loop) and the canvas fade/scale out (via direct style
-  // mutation) as the hero scrolls past. Kept out of React state entirely
-  // so scrolling never triggers a re-render.
-  useEffect(() => {
-    if (mode !== "3d") return;
-    const section = containerRef.current?.closest("section");
-    const wrapper = containerRef.current;
-    if (!section || !wrapper) return;
-
-    const onScroll = () => {
-      const rect = section.getBoundingClientRect();
-      const progress = Math.min(1, Math.max(0, -rect.top / rect.height));
-      scrollCloseRef.current = progress;
-      wrapper.style.opacity = String(1 - progress);
-      wrapper.style.transform = `scale(${1 - progress * 0.08})`;
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, [mode]);
 
   return (

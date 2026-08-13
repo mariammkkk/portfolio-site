@@ -1,13 +1,21 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { profile } from "@/data/content";
 import { Hero3D } from "@/components/hero-3d/hero-3d";
+import { CameraHud } from "@/components/hero-3d/camera-hud";
+import { useScrollProgress } from "@/components/hero-3d/use-scroll-progress";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  // One scroll progress, applied to the shared stage (fades the canvas and
+  // the HUD together) and read by the R3F scene (racks the blades closed).
+  const scrollCloseRef = useScrollProgress(sectionRef, stageRef, true);
 
   const container: Variants = {
     hidden: {},
@@ -26,13 +34,24 @@ export function Hero() {
 
   return (
     <section
+      ref={sectionRef}
       id="top"
-      className="relative flex min-h-[92vh] flex-col justify-center overflow-hidden px-6 pt-24"
+      className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-6 pt-24 text-center"
     >
-      <Hero3D className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[68vmin] w-[68vmin] max-h-155 max-w-155 -translate-x-1/2 -translate-y-1/2 opacity-80 md:pointer-events-auto lg:left-[62%]" />
+      {/* The aperture is the stage the name sits on -- centered on the
+          section, not off to one side. Hero3D and CameraHud share this
+          exact box (and this same fade-on-scroll stage) so the HUD frame
+          always matches the lens beneath it, on load and on the way out. */}
+      <div
+        ref={stageRef}
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[78vmin] w-[78vmin] max-h-175 max-w-175 -translate-x-1/2 -translate-y-1/2 md:pointer-events-auto"
+      >
+        <Hero3D className="absolute inset-0" scrollCloseRef={scrollCloseRef} />
+        <CameraHud className="absolute inset-0" />
+      </div>
 
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-5xl"
+        className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center"
         variants={container}
         initial="hidden"
         animate="show"
@@ -46,7 +65,7 @@ export function Hero() {
 
         <motion.h1
           variants={item}
-          className="font-serif text-[13vw] leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-8xl"
+          className="font-serif text-[15vw] leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl"
         >
           {profile.name}
         </motion.h1>
@@ -60,7 +79,7 @@ export function Hero() {
 
         <motion.div
           variants={item}
-          className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider"
+          className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider"
         >
           <a
             href={`mailto:${profile.email}`}

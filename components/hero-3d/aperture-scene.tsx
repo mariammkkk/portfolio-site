@@ -56,29 +56,33 @@ export function ApertureScene({
 
   return (
     <>
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[2.5, 3, 4]} intensity={1.15} color="#f3efe6" />
-      <pointLight position={[-2, -1.5, 2]} intensity={0.4} color="#e2a23d" />
+      <ambientLight intensity={0.45} />
+      {/* Tight, bright key light -- this is what draws a thin specular
+          streak along each blade's angled edge without lighting the whole
+          matte body evenly. */}
+      <directionalLight position={[2.5, 3.2, 4]} intensity={1.6} color="#f3efe6" />
+      <pointLight position={[-2.2, -1.6, 2.2]} intensity={0.25} color="#e2a23d" />
 
       <group ref={rigRef}>
-        <ApertureBlades ref={bladesRef} color="#e2a23d" />
+        <ApertureBlades ref={bladesRef} />
 
+        {/* Thin amber trim ring -- the barrel accent, not the blades. */}
         <mesh>
-          <ringGeometry args={[1.55, 1.74, ringSegments]} />
+          <ringGeometry args={[1.55, 1.62, ringSegments]} />
           <meshStandardMaterial
             color="#e2a23d"
-            metalness={0.65}
-            roughness={0.28}
+            metalness={0.5}
+            roughness={0.35}
             side={THREE.DoubleSide}
           />
         </mesh>
 
         <mesh position={[0, 0, -0.02]}>
-          <ringGeometry args={[1.74, 1.86, ringSegments]} />
+          <ringGeometry args={[1.62, 1.86, ringSegments]} />
           <meshStandardMaterial
-            color="#292418"
-            metalness={0.2}
-            roughness={0.8}
+            color="#1a1712"
+            metalness={0.3}
+            roughness={0.75}
             side={THREE.DoubleSide}
           />
         </mesh>

@@ -8,7 +8,8 @@ const BLADE_COUNT = 8;
 const CENTER = 100;
 const PIVOT_RADIUS = 54;
 const BLADE_LENGTH = 74;
-const BLADE_WIDTH = 33;
+const BLADE_WIDTH_BASE = 33;
+const BLADE_WIDTH_TIP = 5;
 const OPEN_TWIST_DEG = 64;
 
 function bladePolygon(index: number) {
@@ -18,13 +19,14 @@ function bladePolygon(index: number) {
   const pivotX = CENTER + PIVOT_RADIUS * Math.cos(pivotAngle);
   const pivotY = CENTER + PIVOT_RADIUS * Math.sin(pivotAngle);
 
-  // Wide at the pivot (rim), tapering to a point toward the center -- see
-  // the comment in aperture-blades.tsx for why this stays contained within
-  // the outer ring instead of poking past it.
+  // True trapezoid: wide flat edge at the pivot (rim), narrower flat edge
+  // at the inner tip. See the comment in aperture-blades.tsx for why this
+  // stays contained within the outer ring instead of poking past it.
   const localPoints: [number, number][] = [
-    [0, BLADE_WIDTH / 2],
-    [BLADE_LENGTH, 0],
-    [0, -BLADE_WIDTH / 2],
+    [0, BLADE_WIDTH_BASE / 2],
+    [BLADE_LENGTH, BLADE_WIDTH_TIP / 2],
+    [BLADE_LENGTH, -BLADE_WIDTH_TIP / 2],
+    [0, -BLADE_WIDTH_BASE / 2],
   ];
 
   const cos = Math.cos(rotation);
@@ -54,13 +56,13 @@ export function ApertureFallback({ className }: { className?: string }) {
         cy={CENTER}
         r={78}
         fill="none"
-        stroke="#292418"
-        strokeWidth={3}
+        stroke="#1a1712"
+        strokeWidth={4}
       />
       <circle
         cx={CENTER}
         cy={CENTER}
-        r={70}
+        r={74}
         fill="none"
         stroke="#e2a23d"
         strokeWidth={1.5}
@@ -69,10 +71,10 @@ export function ApertureFallback({ className }: { className?: string }) {
         <polygon
           key={i}
           points={points}
-          fill="#e2a23d"
-          fillOpacity={0.85}
-          stroke="#0b0a08"
-          strokeWidth={0.75}
+          fill="#211d16"
+          stroke="#e2a23d"
+          strokeOpacity={0.35}
+          strokeWidth={0.5}
         />
       ))}
     </svg>
