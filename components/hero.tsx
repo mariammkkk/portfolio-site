@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { profile } from "@/data/content";
+import { Hero3D } from "@/components/hero-3d/hero-3d";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -26,10 +27,12 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[92vh] flex-col justify-center px-6 pt-24"
+      className="relative flex min-h-[92vh] flex-col justify-center overflow-hidden px-6 pt-24"
     >
+      <Hero3D className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[68vmin] w-[68vmin] max-h-155 max-w-155 -translate-x-1/2 -translate-y-1/2 opacity-80 md:pointer-events-auto lg:left-[62%]" />
+
       <motion.div
-        className="mx-auto w-full max-w-5xl"
+        className="relative z-10 mx-auto w-full max-w-5xl"
         variants={container}
         initial="hidden"
         animate="show"
