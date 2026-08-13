@@ -3,6 +3,7 @@ import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Grain } from "@/components/grain";
 import { AmbientBackground } from "@/components/ambient-background";
+import { CustomCursor } from "@/components/hud/custom-cursor";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col font-sans">
         <AmbientBackground />
         <Grain />
+        <CustomCursor />
         {children}
         <Analytics />
       </body>

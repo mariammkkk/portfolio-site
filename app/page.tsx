@@ -6,6 +6,7 @@ import { Projects } from "@/components/projects";
 import { Leadership } from "@/components/leadership";
 import { Education } from "@/components/education";
 import { Contact } from "@/components/contact";
+import { SectionDivider } from "@/components/section-divider";
 
 export default function Home() {
   return (
@@ -14,11 +15,16 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <SectionDivider />
         <Experience />
+        <SectionDivider />
         <Projects />
+        <SectionDivider />
         <Leadership />
+        <SectionDivider />
         <Education />
       </main>
+      <SectionDivider />
       <Contact />
     </>
   );

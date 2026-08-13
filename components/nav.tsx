@@ -4,8 +4,10 @@ import { useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { nav, profile } from "@/data/content";
 import { useActiveSection } from "@/lib/use-active-section";
+import { HoverBrackets } from "@/components/hud/corner-brackets";
 
 const sectionIds = nav.map((item) => item.href.replace("#", ""));
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Nav() {
   const [compressed, setCompressed] = useState(false);
@@ -49,13 +51,24 @@ export function Nav() {
                 <span className={isActive ? "text-ink" : undefined}>
                   {item.label}
                 </span>
-                {isActive && (
-                  <motion.span
-                    layoutId="nav-active-indicator"
-                    className="absolute inset-x-3 -bottom-px h-px bg-accent"
-                    transition={{ type: "spring", stiffness: 420, damping: 38 }}
-                  />
-                )}
+                {/* Aperture-style indicator: opens from a center point
+                    rather than sliding between links like a plain
+                    underline, echoing the hero's iris. Per-link
+                    AnimatePresence (not a shared layoutId) so the old one
+                    visibly closes while the new one opens. */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.span
+                      key="nav-indicator"
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      animate={{ scaleX: 1, opacity: 1 }}
+                      exit={{ scaleX: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: EASE }}
+                      style={{ transformOrigin: "center" }}
+                      className="absolute inset-x-3 -bottom-px h-px bg-accent"
+                    />
+                  )}
+                </AnimatePresence>
               </a>
             );
           })}
@@ -66,8 +79,9 @@ export function Nav() {
             href={profile.resumeHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-none border border-ink/20 px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider text-ink transition-all hover:border-accent hover:text-accent"
+            className="group relative rounded-none border border-ink/20 px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider text-ink transition-all hover:border-accent hover:text-accent"
           >
+            <HoverBrackets />
             Resume
           </a>
           <button

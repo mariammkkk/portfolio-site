@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
+import { CornerBrackets } from "@/components/hud/corner-brackets";
 
 // Decoy values the readouts hunt through before settling, like a camera
 // racing through its metering on wake. Last entry in each list is final.
@@ -10,23 +11,6 @@ const ISO_SEQUENCE = ["ISO 1600", "ISO 100", "ISO 800", "ISO 400"];
 const SHUTTER_SEQUENCE = ["1/2000", "1/60", "1/250", "1/125"];
 const FOCAL_LENGTH = "35MM";
 const HUNT_STEP_MS = 90;
-
-function Bracket({ corner }: { corner: "tl" | "tr" | "bl" | "br" }) {
-  const sides =
-    corner === "tl"
-      ? "left-0 top-0 border-l border-t"
-      : corner === "tr"
-        ? "right-0 top-0 border-r border-t"
-        : corner === "bl"
-          ? "left-0 bottom-0 border-l border-b"
-          : "right-0 bottom-0 border-r border-b";
-  return (
-    <span
-      aria-hidden
-      className={`absolute h-4 w-4 border-accent/70 ${sides}`}
-    />
-  );
-}
 
 /**
  * Camera viewfinder HUD: f-stop / ISO / shutter readouts, autofocus-style
@@ -106,10 +90,7 @@ export function CameraHud({ className }: { className?: string }) {
       aria-hidden
       className={`pointer-events-none select-none font-mono text-accent/80 ${className ?? ""}`}
     >
-      <Bracket corner="tl" />
-      <Bracket corner="tr" />
-      <Bracket corner="bl" />
-      <Bracket corner="br" />
+      <CornerBrackets size={16} className="border-accent/70" />
 
       <span className="absolute left-2 top-2 text-[10px] uppercase tracking-wider sm:left-3 sm:top-3 sm:text-xs">
         {readouts.fStop}

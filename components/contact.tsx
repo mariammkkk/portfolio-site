@@ -1,5 +1,6 @@
 import { profile } from "@/data/content";
 import { RevealGroup, RevealItem } from "@/components/reveal";
+import { HoverBrackets } from "@/components/hud/corner-brackets";
 
 export function Contact() {
   const year = new Date().getFullYear();
@@ -18,32 +19,36 @@ export function Contact() {
           <RevealItem className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
             <a
               href={`mailto:${profile.email}`}
-              className="font-mono text-sm text-ink underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              className="group relative font-mono text-sm text-ink underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
             >
+              <HoverBrackets />
               {profile.email}
             </a>
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-sm text-ink underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              className="group relative font-mono text-sm text-ink underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
             >
+              <HoverBrackets />
               {profile.linkedinLabel}
             </a>
             <a
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-sm text-ink underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              className="group relative font-mono text-sm text-ink underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
             >
+              <HoverBrackets />
               {profile.githubLabel}
             </a>
             <a
               href={profile.resumeHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-ink/20 px-4 py-2 font-mono text-xs uppercase tracking-wider text-ink transition-all hover:border-accent hover:text-accent"
+              className="group relative border border-ink/20 px-4 py-2 font-mono text-xs uppercase tracking-wider text-ink transition-all hover:border-accent hover:text-accent"
             >
+              <HoverBrackets />
               Download Resume
             </a>
           </RevealItem>

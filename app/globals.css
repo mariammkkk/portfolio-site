@@ -38,6 +38,17 @@ body {
   color: var(--ink);
 }
 
+/* Native cursor is replaced by CustomCursor -- scoped to fine-pointer
+   devices only (mouse/trackpad) so touch visitors, who have no cursor to
+   replace and where this media query never matches, are unaffected. */
+@media (pointer: fine) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
 @keyframes grain-flicker {
   0%,
   100% {

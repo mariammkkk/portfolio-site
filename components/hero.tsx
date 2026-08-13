@@ -6,6 +6,7 @@ import { profile } from "@/data/content";
 import { Hero3D } from "@/components/hero-3d/hero-3d";
 import { CameraHud } from "@/components/hero-3d/camera-hud";
 import { useScrollProgress } from "@/components/hero-3d/use-scroll-progress";
+import { HoverBrackets } from "@/components/hud/corner-brackets";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -83,24 +84,27 @@ export function Hero() {
         >
           <a
             href={`mailto:${profile.email}`}
-            className="text-ink/80 underline decoration-border decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            className="group relative text-ink/80 underline decoration-border decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
           >
+            <HoverBrackets />
             {profile.email}
           </a>
           <a
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-ink/80 underline decoration-border decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            className="group relative text-ink/80 underline decoration-border decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
           >
+            <HoverBrackets />
             {profile.linkedinLabel}
           </a>
           <a
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-ink/80 underline decoration-border decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            className="group relative text-ink/80 underline decoration-border decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
           >
+            <HoverBrackets />
             {profile.githubLabel}
           </a>
         </motion.div>
