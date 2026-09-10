@@ -86,23 +86,24 @@ export const projects: Project[] = [
     link: 'https://github.com/mariammkkk',
   },
   {
-    title: 'Beauty Product R&D',
-    tagline: 'Strategy dashboard that mines product and market data to guide beauty R&D decisions.',
-    context: 'Strategy Dashboard',
+    title: 'Sales Performance Dashboard',
+    tagline:
+      'Interactive Tableau dashboard exposing a sales/profit growth gap and the sub-categories driving losses.',
+    context: 'Tableau Project · May 2026',
     featured: true,
     problem:
-      'Beauty R&D decisions are often driven by intuition rather than data, leaving teams without a clear read on ingredient trends, competitor formulations, and what the market actually wants.',
+      'Leadership had no clear read on why profit growth was lagging sales growth, or which product sub-categories were quietly losing money.',
     approach:
-      'Built a Streamlit dashboard on a Python + Pandas pipeline that cleans and mines product and market datasets, using Git LFS to version large data files, and surfaces ingredient, pricing, and positioning trends in one view.',
+      'Built an interactive Tableau dashboard joining 4 relational tables (~10K transactions) and engineering 9 calculated fields to surface growth, margin, and category-level trends in one view.',
     contribution:
-      'Designed and built the tool end to end: data cleaning, the analysis pipeline, and the interactive dashboard that turns raw product data into R&D-ready insights.',
+      'Designed and built the dashboard end to end: data modeling across the relational tables, the calculated fields, and the interactive visualizations.',
     outcome: {
-      metric: 'Data-driven R&D',
+      metric: '5-pt gap',
       detail:
-        'A single interactive view that replaces guesswork with evidence, helping prioritize which product directions to pursue.',
+        'Surfaced a 5-point gap between 2023 sales growth (20%) and profit growth (14%), and identified 4 sub-categories at a net loss, including one at a -13% margin driving over $8K in losses.',
     },
-    stack: ['Python', 'Pandas', 'Streamlit', 'Git LFS'],
-    link: 'https://github.com/mariammkkk',
+    stack: ['Tableau', 'Relational Data', 'Calculated Fields'],
+    link: 'https://github.com/mariammkkk/Sales-Dashboard-Tableau/tree/main',
   },
 ]
 
@@ -138,6 +139,14 @@ export const experience: Experience[] = [
     period: 'Aug 2025 – Oct 2025',
     metric:
       'Deployed the Evo2 genomic foundation model into a clinical AI pipeline, enabling high-throughput variant interpretation for oncology.',
+  },
+  {
+    title: 'AI Data Analyst, Model Evaluation (Contract)',
+    company: 'Browserbase',
+    location: 'Remote',
+    period: 'Oct 2025 – Nov 2025',
+    metric:
+      'Evaluated 1,800+ LLM outputs across 6 models using Stagehand, analyzing hallucinations and reasoning failures to deliver structured feedback that informed model calibration in workflows referenced by Anthropic, Google, and Microsoft.',
   },
   {
     title: 'Data Science & ML Research Assistant',
