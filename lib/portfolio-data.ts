@@ -192,7 +192,14 @@ export type SkillGroup = {
 export const skillGroups: SkillGroup[] = [
   { label: 'Technical', items: ['Python', 'R', 'SQL', 'Java', 'JavaScript', 'Git', 'RAG', 'OCR / Computer Vision', 'ETL Pipelines', 'BigQuery', 'AWS', 'Looker Studio', 'Hypothesis / A-B Testing', 'Regression', 'Cross-Validation'] },
   { label: 'Product', items: ['Notion', 'Figma', 'Tableau', 'Power BI', 'Requirements & Metrics', 'AI Product Management'] },
-  { label: 'Creative', items: ['Photo & Video Production', 'DaVinci Resolve, CapCut, Final Cut Pro, Lightroom', 'Photo Editing', 'Visual Storytelling', 'Composition & Lighting'] },
+  {
+    label: 'Off the Clock',
+    items: [
+      'Marketing & Visual Content —> Video/photo editing and graphic design, across 4+ organizations and counting',
+      'Community & Volunteering —> Giving back since elementary school',
+      'Volleyball & Outdoor Adventures —> Always chasing the next one',
+    ],
+  },
 ]
 
 export type Leadership = {
