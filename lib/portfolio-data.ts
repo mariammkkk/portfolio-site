@@ -2,12 +2,14 @@ export const about = {
   name: 'Mariam Khan',
   role: 'CS · Data Science · AI/ML · Product',
   location: 'Old Bridge, New Jersey',
-  headline: 'I turn messy data and AI/ML into products that ship.',
+  headline: 'I build data-driven products and turn messy data into decisions.',
   summary:
-    'Rutgers CS & Data Science grad (Cum Laude, ’26) working at the intersection of engineering and product: RAG pipelines, agentic systems, and data tooling that real teams actually use. I care less about whether something can be built and more about whether it should be.',
+    'Rutgers CS & Data Science grad (Cum Laude, ’26) working on both sides of building with data: SQL- and Python-driven analysis that turns messy datasets into decisions, and RAG pipelines, agentic systems, and product work that turns those decisions into things people use. I care less about whether something can be built and more about whether it should be.',
   stats: [
     { label: 'Rutgers CS + DS', value: "Cum Laude ’26" },
     { label: 'Duke AI Product Mgmt', value: 'Certified' },
+    { label: 'BigQuery for Data Analysts', value: 'Google Cloud Certified' },
+    { label: 'Advanced Data Analytics', value: 'Google — In Progress' },
   ],
 }
 
@@ -16,6 +18,7 @@ export type Project = {
   tagline: string
   context: string
   featured: boolean
+  tags: ('Product' | 'Data')[]
   problem?: string
   approach?: string
   contribution?: string
@@ -31,16 +34,17 @@ export const projects: Project[] = [
       'Drug-shortage prediction platform giving independent pharmacies the forecasting tools big chains already have.',
     context: 'Independent Research · In Progress',
     featured: true,
+    tags: ['Data', 'Product'],
     problem:
       'Independent pharmacies lack access to the drug-shortage prediction models large chains rely on, a methodological gap I confirmed across 5+ peer-reviewed and government sources (GAO, AJHP, PLOS).',
     approach:
-      'Engineered a Python pipeline on the openFDA REST API to merge multiple datasets and surface early signals on shortage-risk factors, benchmarked against published logistic-regression and ML-classifier studies (69–93% accuracy).',
+      'Engineered a Python pipeline on the openFDA REST API to merge multiple datasets and surface early signals on shortage-risk factors. Validated the risk-scoring model with hypothesis testing and 5-fold cross-validation, benchmarked against published logistic-regression and ML-classifier studies (69–93% accuracy).',
     contribution:
       'Sole researcher and engineer: sourced the literature, defined the methodology, built the data pipeline, and am now designing the pharmacy-facing interface.',
     outcome: {
-      metric: '69–93%',
+      metric: 'AUC 0.81',
       detail:
-        'Targeting published accuracy benchmarks with a pharmacy-facing risk-scoring dashboard that turns FDA regulatory data into an actionable planning tool.',
+        'Cross-validated model performance landing within the published 69–93% accuracy benchmark range, now being built into a pharmacy-facing risk-scoring dashboard that turns FDA regulatory data into an actionable planning tool.',
     },
     stack: ['Python', 'openFDA API', 'ML Classifiers', 'Logistic Regression'],
     link: 'https://github.com/mariammkkk',
@@ -51,6 +55,7 @@ export const projects: Project[] = [
       'Agentic AI demo that automates high-risk insurance claims review and extraction of unstructured medical data.',
     context: 'RWJH x Rutgers Health Hackathon · Oct 2025',
     featured: true,
+    tags: ['Product'],
     problem:
       'Insurance claims review is slow and error-prone, with high-risk claims requiring manual extraction of unstructured medical data and tight policy/regulatory compliance.',
     approach:
@@ -71,16 +76,17 @@ export const projects: Project[] = [
       "AI/ML classification model that detects early Alzheimer's indicators from handwriting patterns.",
     context: 'AI/ML Classification Model · Mar – Apr 2025',
     featured: true,
+    tags: ['Data'],
     problem:
       "Early Alzheimer's is hard to catch, but subtle motor changes surface in handwriting well before a formal diagnosis.",
     approach:
-      'Built a classification model on handwriting-derived features with scikit-learn, handling preprocessing, feature engineering, and evaluation in NumPy and Pandas.',
+      'Built a classification model on handwriting-derived features with scikit-learn, handling preprocessing, feature engineering, and evaluation in NumPy and Pandas, comparing Random Forest against other classifiers.',
     contribution:
       'Built the model end to end: data preparation, feature engineering, training, and evaluation of results.',
     outcome: {
-      metric: 'Early signal',
+      metric: '83%',
       detail:
-        "A working classifier that flags early Alzheimer's indicators from handwriting patterns for further screening.",
+        "Random Forest classifier reached 83% accuracy detecting early Alzheimer's indicators from handwriting patterns, outperforming the other models evaluated.",
     },
     stack: ['Python', 'NumPy', 'Pandas', 'scikit-learn'],
     link: 'https://github.com/mariammkkk',
@@ -91,6 +97,7 @@ export const projects: Project[] = [
       'Interactive Tableau dashboard exposing a sales/profit growth gap and the sub-categories driving losses.',
     context: 'Tableau Project · May 2026',
     featured: true,
+    tags: ['Data'],
     problem:
       'Leadership had no clear read on why profit growth was lagging sales growth, or which product sub-categories were quietly losing money.',
     approach:
@@ -188,7 +195,7 @@ export type SkillGroup = {
 }
 
 export const skillGroups: SkillGroup[] = [
-  { label: 'Technical', items: ['Python', 'R', 'SQL', 'Java', 'JavaScript', 'Git', 'RAG', 'OCR / Computer Vision', 'ETL Pipelines'] },
+  { label: 'Technical', items: ['Python', 'R', 'SQL', 'Java', 'JavaScript', 'Git', 'RAG', 'OCR / Computer Vision', 'ETL Pipelines', 'BigQuery', 'Dataform', 'Looker Studio', 'Hypothesis / A-B Testing', 'Regression', 'Cross-Validation'] },
   { label: 'Product', items: ['Notion', 'Figma', 'Tableau', 'Power BI', 'Requirements & Metrics', 'AI Product Management'] },
   { label: 'Creative', items: ['Photo & Video Production', 'DaVinci Resolve, CapCut, Final Cut Pro, Lightroom', 'Photo Editing', 'Visual Storytelling', 'Composition & Lighting'] },
 ]

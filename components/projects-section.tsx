@@ -29,9 +29,12 @@ export function ProjectsSection() {
               className="flex flex-col border border-border bg-card/40 p-5"
             >
               <div className="mb-2 flex items-center justify-between gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
-                  {p.context}
-                </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                    {p.context}
+                  </span>
+                  <TagBadges tags={p.tags} />
+                </div>
                 {p.link && (
                   <a
                     href={p.link}
@@ -86,13 +89,14 @@ function CaseStudy({
           {String(index).padStart(2, '0')}
         </span>
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <h3 className="font-sans text-2xl font-semibold uppercase leading-none tracking-tight text-foreground sm:text-3xl">
               {p.title}
             </h3>
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
               {p.context}
             </span>
+            <TagBadges tags={p.tags} />
           </div>
           <p className="mt-2 max-w-2xl font-mono text-xs leading-relaxed text-muted-foreground">
             {p.tagline}
@@ -161,6 +165,21 @@ function Field({ term, desc }: { term: string; desc?: string }) {
       </dt>
       <dd className="font-mono text-xs leading-relaxed text-muted-foreground">{desc}</dd>
     </div>
+  )
+}
+
+function TagBadges({ tags, className = '' }: { tags: Project['tags']; className?: string }) {
+  return (
+    <ul className={`flex flex-wrap gap-1.5 ${className}`}>
+      {tags.map((t) => (
+        <li
+          key={t}
+          className="rounded-full border border-primary/50 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.15em] text-primary"
+        >
+          {t}
+        </li>
+      ))}
+    </ul>
   )
 }
 
