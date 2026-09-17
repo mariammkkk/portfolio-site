@@ -5,12 +5,7 @@ export const about = {
   headline: 'I build data-driven products and turn messy data into decisions.',
   summary:
     'Rutgers CS & Data Science grad (Cum Laude, ’26) working on both sides of building with data: SQL- and Python-driven analysis that turns messy datasets into decisions, and RAG pipelines, agentic systems, and product work that turns those decisions into things people use. I care less about whether something can be built and more about whether it should be.',
-  stats: [
-    { label: 'Rutgers CS + DS', value: "Cum Laude ’26" },
-    { label: 'Duke AI Product Mgmt', value: 'Certified' },
-    { label: 'BigQuery for Data Analysts', value: 'Google Cloud Certified' },
-    { label: 'Advanced Data Analytics', value: 'Google — In Progress' },
-  ],
+  stats: [{ label: 'Rutgers CS + DS', value: "Cum Laude ’26" }],
 }
 
 export type Project = {
@@ -195,7 +190,7 @@ export type SkillGroup = {
 }
 
 export const skillGroups: SkillGroup[] = [
-  { label: 'Technical', items: ['Python', 'R', 'SQL', 'Java', 'JavaScript', 'Git', 'RAG', 'OCR / Computer Vision', 'ETL Pipelines', 'BigQuery', 'Dataform', 'Looker Studio', 'Hypothesis / A-B Testing', 'Regression', 'Cross-Validation'] },
+  { label: 'Technical', items: ['Python', 'R', 'SQL', 'Java', 'JavaScript', 'Git', 'RAG', 'OCR / Computer Vision', 'ETL Pipelines', 'BigQuery', 'AWS', 'Looker Studio', 'Hypothesis / A-B Testing', 'Regression', 'Cross-Validation'] },
   { label: 'Product', items: ['Notion', 'Figma', 'Tableau', 'Power BI', 'Requirements & Metrics', 'AI Product Management'] },
   { label: 'Creative', items: ['Photo & Video Production', 'DaVinci Resolve, CapCut, Final Cut Pro, Lightroom', 'Photo Editing', 'Visual Storytelling', 'Composition & Lighting'] },
 ]

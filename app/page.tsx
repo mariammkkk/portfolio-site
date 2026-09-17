@@ -6,9 +6,11 @@ import { CameraRig, type Section } from '@/components/camera-rig'
 import { ProjectsSection } from '@/components/projects-section'
 import { ExperienceSection } from '@/components/experience-section'
 import { SkillsSection, LeadershipSection, ContactSection } from '@/components/detail-sections'
+import { CertificationsSection } from '@/components/certifications-section'
 import { about } from '@/lib/portfolio-data'
 
 const NAV: NavItem[] = [
+  { id: 'certifications', label: 'Certifications' },
   { id: 'work', label: 'Work' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
@@ -101,9 +103,9 @@ export default function Page() {
           </div>
 
           {/* credibility stat block */}
-          <ul className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-border bg-border sm:grid-cols-2">
+          <ul className="mt-12 flex flex-wrap gap-px overflow-hidden border border-border bg-border">
             {about.stats.map((s) => (
-              <li key={s.label} className="bg-background px-4 py-4">
+              <li key={s.label} className="min-w-50 flex-1 bg-background px-4 py-4">
                 <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
                   {s.label}
                 </p>
@@ -115,28 +117,33 @@ export default function Page() {
           </ul>
         </section>
 
+        {/* ---- CERTIFICATIONS ---- */}
+        <Section id="certifications" index="01" title="Certifications" meta="Credentials · Bracket">
+          <CertificationsSection />
+        </Section>
+
         {/* ---- WORK (primary) ---- */}
-        <Section id="work" index="01" title="Selected Work" meta="Case Studies · 1/250s">
+        <Section id="work" index="02" title="Selected Work" meta="Case Studies · 1/250s">
           <ProjectsSection />
         </Section>
 
         {/* ---- EXPERIENCE ---- */}
-        <Section id="experience" index="02" title="Experience" meta="Timeline · f/1.8">
+        <Section id="experience" index="03" title="Experience" meta="Timeline · f/1.8">
           <ExperienceSection />
         </Section>
 
         {/* ---- SKILLS ---- */}
-        <Section id="skills" index="03" title="Skills" meta="Capabilities · ISO 400">
+        <Section id="skills" index="04" title="Skills" meta="Capabilities · ISO 400">
           <SkillsSection />
         </Section>
 
         {/* ---- LEADERSHIP ---- */}
-        <Section id="leadership" index="04" title="Leadership" meta="Volunteering · Burst">
+        <Section id="leadership" index="05" title="Leadership" meta="Volunteering · Burst">
           <LeadershipSection />
         </Section>
 
         {/* ---- CONTACT ---- */}
-        <Section id="contact" index="05" title="Contact" meta="Get in Touch · 35mm" last>
+        <Section id="contact" index="06" title="Contact" meta="Get in Touch · 35mm" last>
           <ContactSection />
         </Section>
       </main>
