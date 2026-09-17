@@ -17,7 +17,7 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Mariam Khan · AI / Data Product · CS + Data Science',
+  title: 'Mariam Khan',
   description:
     'Portfolio of Mariam Khan: Rutgers CS & Data Science grad building AI/ML and data products: RAG pipelines, agentic systems, and data tooling that ships.',
   generator: 'v0.app',
